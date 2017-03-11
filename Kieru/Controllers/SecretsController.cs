@@ -85,8 +85,11 @@ namespace Kieru.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            secret.WasViewed = true;
-            await _context.SaveChangesAsync();
+            if (SecretExists(new Guid(id.ToString())))
+            {
+                secret.WasViewed = true;
+                await _context.SaveChangesAsync();
+            }
 
             return View(secret);
         }
