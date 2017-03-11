@@ -16,5 +16,7 @@ namespace Kieru.Models
         [Required]
         [Display(Name = "Secret")]
         public string Phrase { get; set; }
+
+        public Guid OwnerId { get; set; }
     }
 }
