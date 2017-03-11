@@ -71,6 +71,23 @@ namespace Kieru.Controllers
                 return NotFound();
             }
 
+            if (User.Identity.IsAuthenticated)
+            {
+                if (!new Guid(_userManager.GetUserId(User)).Equals(secret.OwnerId))
+                {
+                    _context.Secret.Remove(secret);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            else if (secret.WasViewed)
+            {
+                _context.Secret.Remove(secret);
+                await _context.SaveChangesAsync();
+            }
+
+            secret.WasViewed = true;
+            await _context.SaveChangesAsync();
+
             return View(secret);
         }
 
