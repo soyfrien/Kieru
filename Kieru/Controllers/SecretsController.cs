@@ -8,16 +8,19 @@ using Microsoft.EntityFrameworkCore;
 using Kieru.Data;
 using Kieru.Models;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Identity;
 
 namespace Kieru.Controllers
 {
     public class SecretsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private UserManager<ApplicationUser> _userManager;
 
-        public SecretsController(ApplicationDbContext context)
+        public SecretsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
-            _context = context;    
+            _context = context;
+            _userManager = userManager;
         }
 
         // GET: Secrets
@@ -99,13 +102,19 @@ namespace Kieru.Controllers
             {
                 secret.Id = Guid.NewGuid();
                 _context.Add(secret);
+
+                if(User.Identity.IsAuthenticated)
+                {
+                    secret.OwnerId = new Guid(_userManager.GetUserId(User));
+                }
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Details", "Secrets", new RouteValueDictionary(new
                 {
                     id = secret.Id
                 }));
-
             }
+
             return View();
         }
 
