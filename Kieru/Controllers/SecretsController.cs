@@ -79,25 +79,25 @@ namespace Kieru.Controllers
                     await _context.SaveChangesAsync();
                 }
             }
-            else if (secret.WasViewed == 1 || secret.WasViewed == 0)
+            else if (secret.ViewedBy == ViewedBy.Recipient || secret.ViewedBy == ViewedBy.Owner)
             {
-                secret.WasViewed = 1;
+                secret.ViewedBy = ViewedBy.Recipient;
                 _context.Secret.Remove(secret);
                 await _context.SaveChangesAsync();
             }
 
-            if (SecretExists(new Guid(id.ToString())) && secret.WasViewed == 0)
+            if (SecretExists(new Guid(id.ToString())) && secret.ViewedBy == ViewedBy.Owner)
             {
                 if (!new Guid(_userManager.GetUserId(User)).Equals(secret.OwnerId))
                 {
-                    secret.WasViewed = 1;
+                    secret.ViewedBy = ViewedBy.Recipient;
                     await _context.SaveChangesAsync();
                 }
             }
 
-            if(secret.WasViewed == -1)
+            if(secret.ViewedBy == ViewedBy.NotViewed)
             {
-                secret.WasViewed = 0;
+                secret.ViewedBy = ViewedBy.Owner;
                 await _context.SaveChangesAsync();
             }
 
@@ -137,7 +137,7 @@ namespace Kieru.Controllers
                 {
                     secret.OwnerId = new Guid(_userManager.GetUserId(User));
                 }
-                secret.WasViewed = -1;
+                secret.ViewedBy = ViewedBy.NotViewed;
 
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Details", "Secrets", new RouteValueDictionary(new

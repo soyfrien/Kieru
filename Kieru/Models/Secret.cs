@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace Kieru.Models
 {
+    public enum ViewedBy
+    {
+        Recipient,
+        Owner,
+        NotViewed
+    }
+
     public class Secret
     {
         [Key]
@@ -20,7 +27,7 @@ namespace Kieru.Models
 
         public Guid OwnerId { get; set; }
 
-        [DefaultValue(-1)]
-        public short WasViewed { get; set; }
+        [DefaultValue(ViewedBy.NotViewed)]
+        public ViewedBy ViewedBy { get; set; }
     }
 }

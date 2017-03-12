@@ -9,9 +9,10 @@ using Kieru.Models;
 namespace Kieru.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170312022409_WasViewedToViewedByEnumerable")]
+    partial class WasViewedToViewedByEnumerable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")

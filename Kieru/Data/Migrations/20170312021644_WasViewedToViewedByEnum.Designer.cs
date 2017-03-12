@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Kieru.Data;
-using Kieru.Models;
 
 namespace Kieru.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170312021644_WasViewedToViewedByEnum")]
+    partial class WasViewedToViewedByEnum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -77,7 +77,7 @@ namespace Kieru.Data.Migrations
                     b.Property<string>("Phrase")
                         .IsRequired();
 
-                    b.Property<int>("ViewedBy");
+                    b.Property<short>("ViewedBy");
 
                     b.HasKey("Id");
 
