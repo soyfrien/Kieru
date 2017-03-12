@@ -20,7 +20,7 @@ namespace Kieru.Models
 
         public Guid OwnerId { get; set; }
 
-        [DefaultValue(false)]
-        public bool WasViewed { get; set; }
+        [DefaultValue(-1)]
+        public short WasViewed { get; set; }
     }
 }

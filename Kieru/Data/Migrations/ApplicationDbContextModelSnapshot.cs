@@ -76,7 +76,7 @@ namespace Kieru.Data.Migrations
                     b.Property<string>("Phrase")
                         .IsRequired();
 
-                    b.Property<bool>("WasViewed");
+                    b.Property<short>("WasViewed");
 
                     b.HasKey("Id");
 

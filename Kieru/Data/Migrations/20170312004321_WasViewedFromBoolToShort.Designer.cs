@@ -8,8 +8,8 @@ using Kieru.Data;
 namespace Kieru.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170311233255_WasViewedToSecretsModel")]
-    partial class WasViewedToSecretsModel
+    [Migration("20170312004321_WasViewedFromBoolToShort")]
+    partial class WasViewedFromBoolToShort
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -77,7 +77,7 @@ namespace Kieru.Data.Migrations
                     b.Property<string>("Phrase")
                         .IsRequired();
 
-                    b.Property<bool>("WasViewed");
+                    b.Property<short>("WasViewed");
 
                     b.HasKey("Id");
 

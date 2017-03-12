@@ -4,22 +4,20 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Kieru.Data.Migrations
 {
-    public partial class WasViewedToSecretsModel : Migration
+    public partial class Signed : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<bool>(
+            migrationBuilder.AlterColumn<short>(
                 name: "WasViewed",
                 table: "Secret",
                 nullable: false,
-                defaultValue: false);
+                defaultValue: (short)-1);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "WasViewed",
-                table: "Secret");
+
         }
     }
 }

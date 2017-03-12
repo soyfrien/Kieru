@@ -8,8 +8,8 @@ using Kieru.Data;
 namespace Kieru.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170311231900_OwnerIdToSecretsModel")]
-    partial class OwnerIdToSecretsModel
+    [Migration("20170312005636_Signed")]
+    partial class Signed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -76,6 +76,8 @@ namespace Kieru.Data.Migrations
 
                     b.Property<string>("Phrase")
                         .IsRequired();
+
+                    b.Property<short>("WasViewed");
 
                     b.HasKey("Id");
 
