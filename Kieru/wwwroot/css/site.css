@@ -1,6 +1,7 @@
 ﻿body {
     padding-bottom: 70px;
     height: 100%;
+    background-color: #f5f5f5;
 }
 
 /* Wrapping element */
@@ -97,6 +98,20 @@ nav a {
     color: rgba(255, 255, 255, 0.96) !important;
 }
 
+.btn-default {
+    background-color: #e3e3e3;
+    color: #454b4c;
+    font-weight: 700;
+    margin: auto;
+    width: 100%;
+    max-width: 100%;
+}
+
+.lookup {
+    font-size: 3em;
+    width: 100%;
+    max-width: 100%
+}
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */

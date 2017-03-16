@@ -16,86 +16,45 @@
     </div>
 </div>
 
-
 <br />
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-7">
-            <section>
-                <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
-                    <h4>Use a local account to log in.</h4>
-                    <hr />
-                    <div class="col-md-11">
-                        <div class="input-group margin-bottom">
-                            <span class="input-group-addon"><label asp-for="Email"></label></span>
-                            <input asp-for="Email" class="form-control col-md-12" />
-                            @*<span asp-validation-for="Email" class="text-danger"></span>*@
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon"><label asp-for="Password"></label></span>
-                            <input asp-for="Password" class="form-control form-control-danger col-md-12" aria-describedby="passwordHelpInline" />
-                            @*<span asp-validation-for="Password" class="form-control-feedback text-danger alert-danger" id="passwordHelpInline"></span>*@
-                        </div>
-                        <div class="input-group">
-                            <div class="form-check">
-                                <label asp-for="RememberMe" class="form-check-label">
-                                    <input asp-for="RememberMe" class="form-check-input" />
-                                    @Html.DisplayNameFor(m => m.RememberMe)
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="margin-bottom">
-                            <button type="submit" class="btn btn-primary col-md-12">Log in</button>
-                        </div>
-                        
-                        <div asp-validation-summary="All" class="form-group bg-danger text-white rounded"></div>
 
+<div class="container body-content">
+    <div>
+        <h3>Authenticate using one of these service providers</h3>
+    </div>
+    <hr />
+    <div>
+        @{
+            var loginProviders = SignInManager.GetExternalAuthenticationSchemes().ToList();
+            if (loginProviders.Count == 0)
+            {
+                <div>
+                    <p>
+                        There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                        for details on setting up this ASP.NET application to support logging in via external services.
+                    </p>
+                </div>
+            }
+            else
+            {
+                <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                    <div>
                         <p>
-                            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
-                        </p>
-                        <p>
-                            <a asp-action="ForgotPassword">Forgot your password?</a>
+                            @foreach (var provider in loginProviders)
+                            {
+                                <div class="col-md-5">
+                                    <button type="submit" 
+                                            class="btn btn-default"
+                                            name="provider" 
+                                            value="@provider.AuthenticationScheme" 
+                                            title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>
+                                </div>
+                            }
                         </p>
                     </div>
                 </form>
-            </section>
-        </div>
-
-
-        <div class="col-md-5">
-            <section>
-                <h4>Use another service to log in.</h4>
-                <hr />
-                <div class="col-md-11">
-                    @{
-                        var loginProviders = SignInManager.GetExternalAuthenticationSchemes().ToList();
-                        if (loginProviders.Count == 0)
-                        {
-                            <div>
-                                <p>
-                                    There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                                    for details on setting up this ASP.NET application to support logging in via external services.
-                                </p>
-                            </div>
-                        }
-                        else
-                        {
-                            <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-                                <div>
-                                    <p>
-                                        @foreach (var provider in loginProviders)
-                                        {
-                                            <button type="submit" class="btn btn-default" name="provider" value="@provider.AuthenticationScheme" title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>
-                                        }
-                                    </p>
-                                </div>
-                            </form>
-                        }
-                    }
-                </div>
-            </section>
-        </div>
+            }
+        }
     </div>
 </div>
 

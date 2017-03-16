@@ -9,16 +9,22 @@
     <environment names="Development,Staging,Production">
         <link rel="stylesheet" href="~/extern/bootstrap/dist/css/bootstrap.css" />
         <link href="~/extern/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        
     </environment>
-    <script src="~/extern/clipboard/dist/clipboard.js"></script>
-    @*<environment names="Staging,Production">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-              asp-fallback-href="~/extern/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/extern/bootstrap/dist/css/bootstrap.min.css" />
         <link href="~/extern/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>*@
+    </environment>
+
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    @*<environment names="Staging,Production">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+                    asp-fallback-href="~/extern/bootstrap/dist/css/bootstrap.min.css"
+                    asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+            <link href="~/extern/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        </environment>*@
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 
@@ -30,7 +36,7 @@
                 <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a asp-area="" asp-controller="Secrets" asp-action="Index" class="navbar-brand">消える</a>
+                <a asp-area="" asp-controller="Secrets" asp-action="Create" class="navbar-brand">消える</a>
             </div>
 
             <div class="navbar-collapse collapse" id="navbar-collapse">
@@ -48,17 +54,23 @@
     <div>
         @RenderBody()
     </div>
-    <footer class="footer bg-faded body-content navbar navbar-default navbar-static-bottom">
-        <div class="container">
-            <p>&copy; 2017 - <a href="https://github.com/ppdac/kieru">Kieru</a></p>
+    <footer class="footer bg-faded navbar navbar-default navbar-static-bottom">
+        <div>
+            <p>&copy; @System.DateTime.Now.Year - <a href="https://github.com/ppdac/kieru">Kieru</a></p>
         </div>
     </footer>
 
-    <environment names="Development,Staging,Production">
+    <environment names="Development">
         <script src="~/extern/jquery/dist/jquery.js"></script>
         <script src="~/extern/bootstrap/dist/js/bootstrap.js"></script>
     </environment>
+    <environment names="Staging,Production">
+        <script src="~/extern/jquery/dist/jquery.min.js"></script>
+        <script src="~/extern/bootstrap/dist/js/bootstrap.min.js"></script>
+    </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/extern/clipboard/dist/clipboard.js"></script>
+
     @*<environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.1.1.min.js"
                 asp-fallback-src="~/extern/jquery/dist/jquery.min.js"

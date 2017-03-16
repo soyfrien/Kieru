@@ -1,4 +1,5 @@
 ﻿@model RegisterViewModel
+@inject SignInManager<ApplicationUser> SignInManager
 @{
     ViewData["Title"] = "Register";
 }
@@ -6,36 +7,46 @@
     <div>
         <h2 class="display-4">Create a new account</h2>
     </div>
+
+    
 </div>
 
+
+
 <div class="container body-content">
-    <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <div class="form-group">
-            <div class="input-group margin-bottom">
-                <label asp-for="Email" class="input-group-addon col-md-2 control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="input-group margin-bottom">
-                <label asp-for="Password" class="input-group-addon col-md-2 control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="input-group margin-bottom">
-                <label asp-for="ConfirmPassword" class="input-group-addon col-md-2 control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-default">Register</button>
-        </div>
-    </form>
+    <div>
+        <h3>Authenticate using one of these service providers</h3>
+    </div>
+    <hr />
+    <div>
+        @{
+            var loginProviders = SignInManager.GetExternalAuthenticationSchemes().ToList();
+            if (loginProviders.Count == 0)
+            {
+                <div>
+                    <p>
+                        There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                        for details on setting up this ASP.NET application to support logging in via external services.
+                    </p>
+                </div>
+            }
+            else
+            {
+                <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                    <div>
+                        <p>
+                            @foreach (var provider in loginProviders)
+                            {
+                                <div class="col-4">
+                                    <button type="submit" class="btn btn-default" name="provider" value="@provider.AuthenticationScheme" title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>
+                                </div>
+                            }
+                        </p>
+                    </div>
+                </form>
+            }
+        }
+    </div>
 </div>
 
     @section Scripts {
