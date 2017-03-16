@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Kieru.Data.Migrations
 {
-    public partial class WasViewedFromBoolToShort : Migration
+    public partial class OwnerIDAndViewedByToSecretsModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,27 +15,27 @@ namespace Kieru.Data.Migrations
                 oldClrType: typeof(string),
                 oldNullable: true);
 
-            migrationBuilder.AlterColumn<Guid>(
+            migrationBuilder.AddColumn<Guid>(
                 name: "OwnerId",
                 table: "Secret",
                 nullable: false,
                 defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
 
-            migrationBuilder.AlterColumn<short>(
-                name: "WasViewed",
+            migrationBuilder.AddColumn<int>(
+                name: "ViewedBy",
                 table: "Secret",
                 nullable: false,
-                defaultValue: (short)-1);
+                defaultValue: 0);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<Guid>(
+            migrationBuilder.DropColumn(
                 name: "OwnerId",
                 table: "Secret");
 
-            migrationBuilder.AlterColumn<short>(
-                name: "WasViewed",
+            migrationBuilder.DropColumn(
+                name: "ViewedBy",
                 table: "Secret");
 
             migrationBuilder.AlterColumn<string>(

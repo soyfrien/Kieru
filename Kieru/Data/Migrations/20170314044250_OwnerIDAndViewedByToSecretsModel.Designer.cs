@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Kieru.Data;
+using Kieru.Models;
 
 namespace Kieru.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170312005636_Signed")]
-    partial class Signed
+    [Migration("20170314044250_OwnerIDAndViewedByToSecretsModel")]
+    partial class OwnerIDAndViewedByToSecretsModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -77,7 +78,7 @@ namespace Kieru.Data.Migrations
                     b.Property<string>("Phrase")
                         .IsRequired();
 
-                    b.Property<short>("WasViewed");
+                    b.Property<int>("ViewedBy");
 
                     b.HasKey("Id");
 

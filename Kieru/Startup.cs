@@ -18,8 +18,12 @@ namespace Kieru
 {
     public class Startup
     {
+        private IHostingEnvironment _env { get; set; }
+
         public Startup(IHostingEnvironment env)
         {
+            _env = env;
+
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -30,7 +34,7 @@ namespace Kieru
                 // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
                 builder.AddUserSecrets<Startup>();
             }
-
+            
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
@@ -50,7 +54,11 @@ namespace Kieru
 
             services.AddMvc(options =>
             {
-                options.SslPort = 44399;
+                if (_env.IsDevelopment())
+                {
+                    options.SslPort = 44399;
+                }
+
                 options.Filters.Add(new RequireHttpsAttribute());
             });
 
@@ -64,6 +72,7 @@ namespace Kieru
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+            
 
             if (env.IsDevelopment())
             {

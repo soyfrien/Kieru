@@ -1,6 +1,6 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding-bottom: 70px;
+    height: 100%;
 }
 
 /* Wrapping element */
@@ -63,6 +63,37 @@ textarea {
 
 .display-none {
     display: none;
+}
+.container {
+    min-height: 100%;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2.5rem;
+    border-top: 1px solid #86B2D8;
+}
+
+.footer a { 
+    color: rgba(255,255,255,0.96);
+    text-decoration: none; }
+
+.bg-faded {
+    background-color: #0067AC;
+    color: rgba(255, 255, 255, 0.96);
+}
+.bg-faded-sub {
+    border-bottom: 1px solid #B2CEE7;
+    background-color: #86B2D8;
+    color: rgba(255, 255, 255, 0.96);
+    margin-bottom: 2.5rem;
+}
+
+nav a {
+    color: rgba(255, 255, 255, 0.96) !important;
 }
 
 /* Hide/rearrange for smaller screens */

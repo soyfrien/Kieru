@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kieru.Utilities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -13,6 +14,7 @@ namespace Kieru.Models
         Owner,
         NotViewed
     }
+    
 
     public class Secret
     {
@@ -30,4 +32,6 @@ namespace Kieru.Models
         [DefaultValue(ViewedBy.NotViewed)]
         public ViewedBy ViewedBy { get; set; }
     }
+
+
 }

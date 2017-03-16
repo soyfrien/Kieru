@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Kieru.Data;
 using Kieru.Models;
@@ -100,7 +98,7 @@ namespace Kieru.Controllers
                 secret.ViewedBy = ViewedBy.Owner;
                 await _context.SaveChangesAsync();
             }
-
+            
             return View(secret);
         }
 
@@ -130,6 +128,8 @@ namespace Kieru.Controllers
         {
             if (ModelState.IsValid)
             {
+                
+
                 secret.Id = Guid.NewGuid();
                 _context.Add(secret);
 

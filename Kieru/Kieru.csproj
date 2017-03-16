@@ -13,6 +13,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Ultilities\**" />
+    <Content Remove="Ultilities\**" />
+    <EmbeddedResource Remove="Ultilities\**" />
+    <None Remove="Ultilities\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Properties\PublishProfiles\CustomProfile.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\extern\bootstrap\.bower.json" />
     <Content Include="wwwroot\extern\bootstrap\bower.json" />
     <Content Include="wwwroot\extern\bootstrap\CHANGELOG.md" />
