@@ -107,7 +107,7 @@ namespace Kieru
 
                 routes.MapRoute(
                     name: "Secret",
-                    template: "{controller=Secrets}/{action=Index}/{id?}");
+                    template: "{controller=Secrets}/{action=Create}/{id?}");
             });
         }
     }
