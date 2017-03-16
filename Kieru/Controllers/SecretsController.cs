@@ -235,8 +235,6 @@ namespace Kieru.Controllers
         }
         public IActionResult About()
         {
-            ViewData["Message"] = "Aboue Kieru";
-
             return View();
         }
     }
