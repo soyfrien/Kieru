@@ -5,22 +5,14 @@
 @inject SignInManager<ApplicationUser> SignInManager
 
 <div class="bg-faded-sub">
-    <div class="container-fluid">
-        <div class="row">
-                @{
-                    ViewData["Title"] = "Log in";
-                }
-
-                <h2 class="display-4 text-lg-center">@ViewData["Title"]</h2>
-        </div>
-    </div>
+    <h2 class="display-4 text-lg-center">Log in for extra functionality</h2>
 </div>
 
 <br />
 
 <div class="container body-content">
     <div>
-        <h3>Authenticate using one of these service providers</h3>
+        <h3 class="slim">Authenticate using one of these service providers</h3>
     </div>
     <hr />
     <div>
@@ -37,20 +29,60 @@
             }
             else
             {
-                <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
-                    <div>
-                        <p>
-                            @foreach (var provider in loginProviders)
-                            {
-                                <div class="col-md-5">
-                                    <button type="submit" 
+                <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+                    <div class="row">
+                        @foreach (var provider in loginProviders)
+                        {
+                            <div class="col-5 mb-2">
+                                @if (provider.AuthenticationScheme.ToLower() == "twitter")
+                                {
+                                    <button type="submit"
                                             class="btn btn-default"
-                                            name="provider" 
-                                            value="@provider.AuthenticationScheme" 
-                                            title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>
-                                </div>
-                            }
-                        </p>
+                                            name="provider"
+                                            value="@provider.AuthenticationScheme"
+                                            title="Log in using your @provider.DisplayName account">
+                                        <i class="fa fa-twitter fa-rem-fix"  alt="Signin using twitter."></i>
+                                    </button>
+                                }
+                                @if (provider.AuthenticationScheme.ToLower() == "facebook")
+                                {
+                                    <button type="submit"
+                                            class="btn btn-default"
+                                            name="provider"
+                                            value="@provider.AuthenticationScheme"
+                                            title="Log in using your @provider.DisplayName account">
+                                        <i class="fa fa-facebook fa-rem-fix" alt="Signin using @provider.DisplayName."></i>
+                                    </button>
+                                }
+                                @if(provider.AuthenticationScheme.ToLower() == "google")
+                                {
+                                    <button type = "submit"
+                                            class="btn btn-default"
+                                            name="provider"
+                                            value="@provider.AuthenticationScheme"
+                                            title="Log in using your @provider.DisplayName account">
+                                        <i class="fa fa-google fa-rem-fix" alt="Signin using @provider.DisplayName."></i>
+                                    </button>
+                                }@if (provider.AuthenticationScheme.ToLower() == "microsoft")
+                                {
+                                    <button type="submit"
+                                            class="btn btn-default"
+                                            name="provider"
+                                            value="@provider.AuthenticationScheme"
+                                            title="Log in using your @provider.DisplayName account">
+                                        <i class="fa fa-windows fa-rem-fix" alt="Signin using @provider.DisplayName."></i>
+                                    </button>
+                                }
+
+
+                                @*<button type="submit"
+                                        class="btn btn-default"
+                                        name="provider"
+                                        value="@provider.AuthenticationScheme"
+                                        title="Log in using your @provider.DisplayName account">@provider.AuthenticationScheme</button>*@
+                                
+                            </div>
+            }
                     </div>
                 </form>
             }

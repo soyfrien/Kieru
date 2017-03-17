@@ -103,6 +103,16 @@ namespace Kieru
                 ConsumerKey = Configuration["Authentication:Twitter:ConsumerKey"],
                 ConsumerSecret = Configuration["Authentication:Twitter:ConsumerSecret"]
             });
+            app.UseGoogleAuthentication(new GoogleOptions()
+            {
+                ClientId = Configuration["Authentication:Google:ClientId"],
+                ClientSecret = Configuration["Authentication:Google:ClientSecret"]
+            });
+            app.UseMicrosoftAccountAuthentication(new MicrosoftAccountOptions()
+            {
+                ClientId = Configuration["Authentication:Microsoft:ClientId"],
+                ClientSecret = Configuration["Authentication:Microsoft:ClientSecret"],
+            });
 
             app.UseMvc(routes =>
             {

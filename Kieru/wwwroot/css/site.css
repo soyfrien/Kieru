@@ -90,7 +90,6 @@ textarea {
     border-bottom: 1px solid #B2CEE7;
     background-color: #86B2D8;
     color: rgba(255, 255, 255, 0.96);
-    margin-bottom: 2.5rem;
     padding: 1rem;
 }
 
@@ -101,7 +100,6 @@ nav a {
 .btn-default {
     background-color: #e3e3e3;
     color: #454b4c;
-    font-weight: 700;
     margin: auto;
     width: 100%;
     max-width: 100%;
@@ -112,6 +110,10 @@ nav a {
     width: 100%;
     max-width: 100%
 }
+.slim { font-weight: 100; }
+
+.fa-rem-fix { font-size: 6rem; }
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
