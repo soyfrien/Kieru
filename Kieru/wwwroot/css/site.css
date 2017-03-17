@@ -124,6 +124,18 @@ nav a {
 }
 
 .padded { padding: 0.75rem; }
+
+.btn:hover {
+    text-decoration: none;
+    background-color: #C4D8E2;
+    color: white;
+}
+a.nav-link:hover {
+    color: #ffffff !important;
+}
+a.footer:hover {
+    color: #ffffff !important;
+}
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
