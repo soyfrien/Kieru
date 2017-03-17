@@ -5,14 +5,14 @@
 @inject SignInManager<ApplicationUser> SignInManager
 
 <div class="bg-faded-sub">
-    <h2 class="display-4 text-lg-center">Log in for extra functionality</h2>
+    <h2 class="display-4 text-lg-center">Log in<span class="hidden-sm-down"> for extra functionality</span></h2>
 </div>
 
 <br />
 
 <div class="container body-content">
     <div>
-        <h3 class="slim">Authenticate using one of these service providers</h3>
+        <h3 class="slim">Authenticate using <span class="hidden-sm-down"> one of </span>these service providers</h3>
     </div>
     <hr />
     <div>
@@ -33,7 +33,7 @@
                     <div class="row">
                         @foreach (var provider in loginProviders)
                         {
-                            <div class="col-5 mb-2">
+                            <div class="col-sm-3 mb-2">
                                 @if (provider.AuthenticationScheme.ToLower() == "twitter")
                                 {
                                     <button type="submit"
@@ -41,7 +41,7 @@
                                             name="provider"
                                             value="@provider.AuthenticationScheme"
                                             title="Log in using your @provider.DisplayName account">
-                                        <i class="fa fa-twitter fa-rem-fix"  alt="Signin using twitter."></i>
+                                        <i class="fa fa-twitter fa-6x padded"  alt="Signin using twitter."></i>
                                     </button>
                                 }
                                 @if (provider.AuthenticationScheme.ToLower() == "facebook")
@@ -51,7 +51,7 @@
                                             name="provider"
                                             value="@provider.AuthenticationScheme"
                                             title="Log in using your @provider.DisplayName account">
-                                        <i class="fa fa-facebook fa-rem-fix" alt="Signin using @provider.DisplayName."></i>
+                                        <i class="fa fa-facebook fa-6x padded" alt="Signin using @provider.DisplayName."></i>
                                     </button>
                                 }
                                 @if(provider.AuthenticationScheme.ToLower() == "google")
@@ -61,7 +61,7 @@
                                             name="provider"
                                             value="@provider.AuthenticationScheme"
                                             title="Log in using your @provider.DisplayName account">
-                                        <i class="fa fa-google fa-rem-fix" alt="Signin using @provider.DisplayName."></i>
+                                        <i class="fa fa-google fa-6x padded" alt="Signin using @provider.DisplayName."></i>
                                     </button>
                                 }@if (provider.AuthenticationScheme.ToLower() == "microsoft")
                                 {
@@ -70,7 +70,7 @@
                                             name="provider"
                                             value="@provider.AuthenticationScheme"
                                             title="Log in using your @provider.DisplayName account">
-                                        <i class="fa fa-windows fa-rem-fix" alt="Signin using @provider.DisplayName."></i>
+                                        <i class="fa fa-windows fa-6x padded" alt="Signin using @provider.DisplayName."></i>
                                     </button>
                                 }
 
