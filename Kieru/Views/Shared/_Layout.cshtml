@@ -17,6 +17,9 @@
     </environment>
 
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="icon"
+          type="image/png"
+          href="~/favicon.png">
 
     @*<environment names="Staging,Production">
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
@@ -36,7 +39,9 @@
                 <button type="button" class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a asp-area="" asp-controller="Secrets" asp-action="Create" class="navbar-brand">消える</a>
+                <a asp-area="" asp-controller="Secrets" asp-action="Create" class="navbar-brand">
+                    <img src="~/favicon.png" alt="消える (Vanish)"/>
+                </a>
             </div>
 
             <div class="navbar-collapse collapse" id="navbar-collapse">
