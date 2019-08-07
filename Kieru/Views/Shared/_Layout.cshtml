@@ -1,5 +1,4 @@
-﻿@inject Microsoft.ApplicationInsights.AspNetCore.JavaScriptSnippet JavaScriptSnippet
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -20,15 +19,6 @@
     <link rel="icon"
           type="image/png"
           href="~/favicon.png">
-
-    @*<environment names="Staging,Production">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-                    asp-fallback-href="~/extern/bootstrap/dist/css/bootstrap.min.css"
-                    asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-            <link href="~/extern/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-            <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-        </environment>*@
-    @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 
 <body>

@@ -55,11 +55,9 @@ namespace Kieru
             services.AddMvc(options =>
             {
                 if (_env.IsDevelopment())
-                {
                     options.SslPort = 44399;
-                }
-
-                options.Filters.Add(new RequireHttpsAttribute());
+                else
+                    options.Filters.Add(new RequireHttpsAttribute());
             });
 
             // Add application services.
