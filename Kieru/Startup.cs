@@ -52,6 +52,8 @@ namespace Kieru
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddApplicationInsightsTelemetry();
+
             services.AddMvc(options =>
             {
                 if (_env.IsDevelopment())
@@ -70,16 +72,11 @@ namespace Kieru
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
-
-                // Browser Link is not compatible with Kestrel 1.1.0
-                // For details on enabling Browser Link, see https://go.microsoft.com/fwlink/?linkid=840936
-                // app.UseBrowserLink();
             }
             else
             {
