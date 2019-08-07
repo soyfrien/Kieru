@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.ApplicationInsights.AspNetCore;
 
 namespace Kieru
 {
@@ -16,6 +17,7 @@ namespace Kieru
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseApplicationInsights()
                 .Build();
 
             host.Run();
