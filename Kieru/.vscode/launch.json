@@ -1,0 +1,9 @@
+{
+    "configurations": [
+        {"xdebugSettings": {},
+            "name": "kestrel",
+            "request": "launch",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
